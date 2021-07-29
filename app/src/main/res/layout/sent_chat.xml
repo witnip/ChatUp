@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:paddingTop="16dp">
+
+    <TextView
+        android:id="@+id/tvSentText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@id/ivCorner"
+        android:layout_toLeftOf="@id/ivCorner"
+        android:background="@drawable/sent_shape"
+        android:padding="16dp"
+        android:text="Hello asxzMNXVmNZXkjhzx \n jhwqeahsdgadhgasd"
+        android:textColor="@color/white" />
+
+    <ImageView
+        android:id="@+id/ivCorner"
+        android:layout_width="8dp"
+        android:layout_height="16dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="start"
+        android:layout_marginTop="-5dp"
+        android:background="@drawable/send_corner" />
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="-10dp"
+        android:layout_marginRight="-10dp"
+        android:layout_toStartOf="@id/tvSentText"
+        android:layout_toLeftOf="@id/tvSentText"
+        android:src="@drawable/ic_fb_love" />
+</RelativeLayout>

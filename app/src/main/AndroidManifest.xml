@@ -14,7 +14,8 @@
         android:theme="@style/Theme.ChatUp"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".Activities.Profile"></activity>
+        <activity android:name=".ChatActivity"></activity>
+        <activity android:name=".Activities.Profile" />
         <activity
             android:name=".Activities.OTPActivity"
             android:windowSoftInputMode="stateVisible" />

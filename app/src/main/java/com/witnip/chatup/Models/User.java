@@ -1,7 +1,7 @@
 package com.witnip.chatup.Models;
 
 public class User {
-    String uid,name,phoneNumber,profileImage;
+    private String uid,name,phoneNumber,profileImage;
 
     public User() {
     }

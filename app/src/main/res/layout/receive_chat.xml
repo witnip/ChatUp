@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="10dp">
+
+    <TextView
+        android:id="@+id/tvReceiveChat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/ivCorner"
+        android:layout_toRightOf="@id/ivCorner"
+        android:background="@drawable/receive_shape"
+        android:padding="16dp"
+        android:text="Hello"
+        android:textColor="@color/black" />
+
+    <ImageView
+        android:id="@+id/ivCorner"
+        android:layout_width="8dp"
+        android:layout_height="16dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_gravity="start"
+        android:layout_marginTop="-10dp"
+        android:background="@drawable/receive_corner" />
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="-10dp"
+        android:layout_marginLeft="-10dp"
+        android:layout_toEndOf="@id/tvReceiveChat"
+        android:layout_toRightOf="@id/tvReceiveChat"
+        android:src="@drawable/ic_fb_love" />
+
+
+</RelativeLayout>
