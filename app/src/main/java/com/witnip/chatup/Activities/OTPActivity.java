@@ -37,6 +37,8 @@ public class OTPActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         getSupportActionBar().hide();
 
+        binding.otpView.requestFocus();
+
         mAuth = FirebaseAuth.getInstance();
 
         Intent intent = getIntent();
