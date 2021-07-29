@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "709080088733",
+    "project_id": "chatup-321007",
+    "storage_bucket": "chatup-321007.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:709080088733:android:4113fdedcf8916dd905474",
+        "android_client_info": {
+          "package_name": "com.witnip.chatup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "709080088733-ir91si1rqbsn7mjjjiv1id55ibl9ekst.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.witnip.chatup",
+            "certificate_hash": "ba7e83c36dfa0970dc17c51908874eb952cbae32"
+          }
+        },
+        {
+          "client_id": "709080088733-odt0uvvm7kueepursu0go5s8quho8ig9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDw1BdUcGyhyL4hucxsSh4kosgZeZbIbi4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "709080088733-odt0uvvm7kueepursu0go5s8quho8ig9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
