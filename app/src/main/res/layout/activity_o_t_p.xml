@@ -70,6 +70,7 @@
                 android:itemBackground="@color/grey"
                 android:textColor="@android:color/black"
                 app:OtpItemCount="6"
+                android:focusableInTouchMode="true"
                 app:OtpLineColor="@color/purple_500"
                 app:OtpViewType="line"
                 android:layout_gravity="center"

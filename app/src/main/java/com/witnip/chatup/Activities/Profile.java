@@ -45,7 +45,7 @@ public class Profile extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance();
         mStorage = FirebaseStorage.getInstance();
 
-        ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
+        ActivityResultLauncher<Intent> profileActivityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
                     @Override
@@ -64,7 +64,7 @@ public class Profile extends AppCompatActivity {
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_GET_CONTENT);
             intent.setType("image/*");
-            someActivityResultLauncher.launch(intent);
+            profileActivityResultLauncher.launch(intent);
         });
 
         binding.btnSetupProfile.setOnClickListener(new View.OnClickListener() {

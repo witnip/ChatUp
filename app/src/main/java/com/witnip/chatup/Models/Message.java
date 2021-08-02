@@ -3,7 +3,7 @@ package com.witnip.chatup.Models;
 public class Message {
     private String messageID, message, senderID;
     private long timestamp;
-    private int feeling;
+    private int feeling = -1;
 
     public Message() {
     }
