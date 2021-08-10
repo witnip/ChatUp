@@ -48,34 +48,31 @@ public class TopStatusAdapter extends RecyclerView.Adapter<TopStatusAdapter.TopS
 
         holder.binding.circularStatusView.setPortionsCount(userStatus.getStatuses().size());
 
-        holder.binding.circularStatusView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ArrayList<MyStory> myStories = new ArrayList<>();
-                for(Status status : userStatus.getStatuses()){
-                    myStories.add(new MyStory(status.getImageUrl()));
-                }
-
-                new StoryView.Builder(((MainActivity)mContext).getSupportFragmentManager())
-                        .setStoriesList(myStories) // Required
-                        .setStoryDuration(5000) // Default is 2000 Millis (2 Seconds)
-                        .setTitleText(userStatus.getName()) // Default is Hidden
-                        .setSubtitleText("") // Default is Hidden
-                        .setTitleLogoUrl(userStatus.getProfileImage()) // Default is Hidden
-                        .setStoryClickListeners(new StoryClickListeners() {
-                            @Override
-                            public void onDescriptionClickListener(int position) {
-                                //your action
-                            }
-
-                            @Override
-                            public void onTitleIconClickListener(int position) {
-                                //your action
-                            }
-                        }) // Optional Listeners
-                        .build() // Must be called before calling show method
-                        .show();
+        holder.binding.circularStatusView.setOnClickListener(v -> {
+            ArrayList<MyStory> myStories = new ArrayList<>();
+            for(Status status : userStatus.getStatuses()){
+                myStories.add(new MyStory(status.getImageUrl()));
             }
+
+            new StoryView.Builder(((MainActivity)mContext).getSupportFragmentManager())
+                    .setStoriesList(myStories) // Required
+                    .setStoryDuration(5000) // Default is 2000 Millis (2 Seconds)
+                    .setTitleText(userStatus.getName()) // Default is Hidden
+                    .setSubtitleText("") // Default is Hidden
+                    .setTitleLogoUrl(userStatus.getProfileImage()) // Default is Hidden
+                    .setStoryClickListeners(new StoryClickListeners() {
+                        @Override
+                        public void onDescriptionClickListener(int position1) {
+                            //your action
+                        }
+
+                        @Override
+                        public void onTitleIconClickListener(int position1) {
+                            //your action
+                        }
+                    }) // Optional Listeners
+                    .build() // Must be called before calling show method
+                    .show();
         });
     }
 

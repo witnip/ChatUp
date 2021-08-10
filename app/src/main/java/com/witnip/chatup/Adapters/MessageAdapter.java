@@ -1,27 +1,32 @@
 package com.witnip.chatup.Adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.bumptech.glide.Glide;
 import com.github.pgreze.reactions.ReactionPopup;
 import com.github.pgreze.reactions.ReactionsConfig;
 import com.github.pgreze.reactions.ReactionsConfigBuilder;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.witnip.chatup.Models.Message;
-import com.witnip.chatup.Models.User;
 import com.witnip.chatup.R;
+import com.witnip.chatup.databinding.DeleteDialogBinding;
 import com.witnip.chatup.databinding.ReceiveChatBinding;
 import com.witnip.chatup.databinding.SentChatBinding;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MessageAdapter extends RecyclerView.Adapter{
 
@@ -40,10 +45,11 @@ public class MessageAdapter extends RecyclerView.Adapter{
         this.receiverRoom = receiverRoom;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public int getItemViewType(int position) {
         Message message = messages.get(position);
-        if(FirebaseAuth.getInstance().getUid().equals(message.getSenderID())){
+        if(Objects.equals(FirebaseAuth.getInstance().getUid(), message.getSenderID())){
             return ITEM_SENT;
         }else{
             return ITEM_RECEIVE;
@@ -66,7 +72,7 @@ public class MessageAdapter extends RecyclerView.Adapter{
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Message message = messages.get(position);
 
-        int reactions[] = new int[]{
+        int[] reactions = new int[]{
                 R.drawable.ic_fb_like,
                 R.drawable.ic_fb_love,
                 R.drawable.ic_fb_laugh,
@@ -111,6 +117,15 @@ public class MessageAdapter extends RecyclerView.Adapter{
 
         if(holder.getClass() == SentViewHolder.class){
             SentViewHolder sentViewHolder = (SentViewHolder) holder;
+
+            if(message.getMessage().equals("photo")){
+                sentViewHolder.binding.image.setVisibility(View.VISIBLE);
+                sentViewHolder.binding.tvSentMessage.setVisibility(View.GONE);
+                Glide.with(mContext).load(message.getImageUrl())
+                        .placeholder(R.drawable.placeholder)
+                        .into(sentViewHolder.binding.image);
+            }
+
             sentViewHolder.binding.tvSentMessage.setText(message.getMessage());
 
             if(message.getFeeling()>=0){
@@ -127,8 +142,81 @@ public class MessageAdapter extends RecyclerView.Adapter{
                     return false;
                 }
             });
+
+            sentViewHolder.binding.image.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    popup.onTouch(v,event);
+                    return false;
+                }
+            });
+
+            sentViewHolder.binding.delete.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    View view = LayoutInflater.from(mContext).inflate(R.layout.delete_dialog, null);
+                    DeleteDialogBinding binding = DeleteDialogBinding.bind(view);
+                    AlertDialog dialog = new AlertDialog.Builder(mContext)
+                            .setTitle("Delete Message")
+                            .setView(binding.getRoot())
+                            .create();
+
+                    binding.everyone.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            message.setMessage("This message is removed.");
+                            message.setFeeling(-1);
+                            FirebaseDatabase.getInstance().getReference()
+                                    .child("chats")
+                                    .child(senderRoom)
+                                    .child("messages")
+                                    .child(message.getMessageID()).setValue(message);
+
+                            FirebaseDatabase.getInstance().getReference()
+                                    .child("chats")
+                                    .child(receiverRoom)
+                                    .child("messages")
+                                    .child(message.getMessageID()).setValue(message);
+                            dialog.dismiss();
+                        }
+                    });
+
+                    binding.delete.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            FirebaseDatabase.getInstance().getReference()
+                                    .child("chats")
+                                    .child(senderRoom)
+                                    .child("messages")
+                                    .child(message.getMessageID()).setValue(null);
+                            dialog.dismiss();
+                        }
+                    });
+
+                    binding.cancel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    dialog.show();
+
+                    return true;
+                }
+            });
         }else{
             ReceiverViewHolder receiverViewHolder = (ReceiverViewHolder) holder;
+
+            if(message.getMessage().equals("photo")){
+                receiverViewHolder.binding.image.setVisibility(View.VISIBLE);
+                receiverViewHolder.binding.tvReceiveMessage.setVisibility(View.GONE);
+                Glide.with(mContext)
+                        .load(message.getImageUrl())
+                        .placeholder(R.drawable.placeholder)
+                        .into(receiverViewHolder.binding.image);
+            }
+
             receiverViewHolder.binding.tvReceiveMessage.setText(message.getMessage());
 
             if(message.getFeeling()>=0){
@@ -145,6 +233,69 @@ public class MessageAdapter extends RecyclerView.Adapter{
                     return false;
                 }
             });
+
+            receiverViewHolder.binding.image.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    popup.onTouch(v,event);
+                    return false;
+                }
+            });
+
+            receiverViewHolder.binding.delete.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    View view = LayoutInflater.from(mContext).inflate(R.layout.delete_dialog, null);
+                    DeleteDialogBinding binding = DeleteDialogBinding.bind(view);
+                    AlertDialog dialog = new AlertDialog.Builder(mContext)
+                            .setTitle("Delete Message")
+                            .setView(binding.getRoot())
+                            .create();
+
+                    binding.everyone.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            message.setMessage("This message is removed.");
+                            message.setFeeling(-1);
+                            FirebaseDatabase.getInstance().getReference()
+                                    .child("chats")
+                                    .child(senderRoom)
+                                    .child("messages")
+                                    .child(message.getMessageID()).setValue(message);
+
+                            FirebaseDatabase.getInstance().getReference()
+                                    .child("chats")
+                                    .child(receiverRoom)
+                                    .child("messages")
+                                    .child(message.getMessageID()).setValue(message);
+                            dialog.dismiss();
+                        }
+                    });
+
+                    binding.delete.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            FirebaseDatabase.getInstance().getReference()
+                                    .child("chats")
+                                    .child(senderRoom)
+                                    .child("messages")
+                                    .child(message.getMessageID()).setValue(null);
+                            dialog.dismiss();
+                        }
+                    });
+
+                    binding.cancel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    dialog.show();
+
+                    return true;
+                }
+            });
         }
     }
 
@@ -153,7 +304,7 @@ public class MessageAdapter extends RecyclerView.Adapter{
         return messages.size();
     }
 
-    public class SentViewHolder extends RecyclerView.ViewHolder{
+    public static class SentViewHolder extends RecyclerView.ViewHolder{
 
         SentChatBinding binding;
         public SentViewHolder(@NonNull View itemView) {
@@ -162,7 +313,7 @@ public class MessageAdapter extends RecyclerView.Adapter{
         }
     }
 
-    public class ReceiverViewHolder extends RecyclerView.ViewHolder{
+    public static class ReceiverViewHolder extends RecyclerView.ViewHolder{
 
         ReceiveChatBinding binding;
 

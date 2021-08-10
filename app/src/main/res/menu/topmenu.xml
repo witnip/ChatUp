@@ -8,9 +8,6 @@
         android:title="Search"
         app:showAsAction="always" />
     <item
-        android:id="@+id/menuGroups"
-        android:title="Groups" />
-    <item
         android:id="@+id/menuInvite"
         android:title="Invite" />
     <item

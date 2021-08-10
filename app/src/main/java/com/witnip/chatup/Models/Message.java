@@ -1,7 +1,10 @@
 package com.witnip.chatup.Models;
 
 public class Message {
-    private String messageID, message, senderID;
+    private String messageID;
+    private String message;
+    private String senderID;
+    private String imageUrl;
     private long timestamp;
     private int feeling = -1;
 
@@ -20,6 +23,14 @@ public class Message {
         this.message = message;
         this.senderID = senderID;
         this.timestamp = timestamp;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getMessageID() {

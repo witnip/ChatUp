@@ -28,8 +28,7 @@
             android:layout_centerInParent="true"
             app:portion_color="@color/purple_700"
             app:portion_spacing="10dp"
-            app:portion_width="4dp"
-            app:portions_count="3" />
+            app:portion_width="4dp" />
 
 
     </RelativeLayout>

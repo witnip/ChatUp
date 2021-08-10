@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.witnip.chatup">
+    package="com.witnip.chatup" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -13,15 +13,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ChatUp"
         android:usesCleartextTraffic="true"
-        tools:targetApi="m">
-        <activity android:name=".Activities.ChatActivity"></activity>
+        tools:targetApi="m" >
+        <activity
+            android:name=".Activities.ChatActivity"
+            android:theme="@style/Theme.ChatUp.NoActionBar" />
         <activity android:name=".Activities.Profile" />
         <activity
             android:name=".Activities.OTPActivity"
             android:windowSoftInputMode="stateVisible" />
         <activity
             android:name=".Activities.PhoneNumberActivity"
-            android:windowSoftInputMode="stateVisible">
+            android:windowSoftInputMode="stateVisible" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,6 +31,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.MainActivity" />
-    </application>
 
+        <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
+     See README(https://goo.gl/l4GJaQ) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_send_24" />
+        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/purple_500" />
+    </application>
 </manifest>

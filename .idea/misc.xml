@@ -3,18 +3,28 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Android Workspace/ChatUp/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/Android Workspace/ChatUp/app/src/main/res/layout/activity_o_t_p.xml" value="0.25416666666666665" />
-        <entry key="..\:/Android Workspace/ChatUp/app/src/main/res/layout/demo_status.xml" value="0.25416666666666665" />
-        <entry key="..\:/Android Workspace/ChatUp/app/src/main/res/layout/demo_users.xml" value="0.25416666666666665" />
-        <entry key="..\:/Android Workspace/ChatUp/app/src/main/res/layout/item_status.xml" value="0.25416666666666665" />
-        <entry key="..\:/Android Workspace/ChatUp/app/src/main/res/layout/row_converstation.xml" value="0.4" />
-        <entry key="..\:/Android Workspace/ChatUp/app/src/main/res/layout/status.xml" value="0.25416666666666665" />
-        <entry key="..\:/Android Workspace/ChatUp/app/src/main/res/menu/menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android Workspace/ChatUp/app/src/main/res/layout/receive_chat.xml" value="0.22407407407407406" />
+        <entry key="..\:/Android Workspace/ChatUp/app/src/main/res/layout/sent_chat.xml" value="0.536" />
+        <entry key="..\:/Android Workspace/ChatUp/app/src/main/res/menu/topmenu.xml" value="0.4" />
+        <entry key="..\:/AndroidWorkspace/ChatUp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3828125" />
+        <entry key="..\:/AndroidWorkspace/ChatUp/app/src/main/res/drawable-v24/ic_left_arrow.xml" value="0.3828125" />
+        <entry key="..\:/AndroidWorkspace/ChatUp/app/src/main/res/drawable-v24/ic_search.xml" value="0.3828125" />
+        <entry key="..\:/AndroidWorkspace/ChatUp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3828125" />
+        <entry key="..\:/AndroidWorkspace/ChatUp/app/src/main/res/drawable/receive_shape.xml" value="0.3828125" />
+        <entry key="..\:/AndroidWorkspace/ChatUp/app/src/main/res/drawable/sent_shape.xml" value="0.3828125" />
+        <entry key="..\:/AndroidWorkspace/ChatUp/app/src/main/res/layout/activity_chat.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidWorkspace/ChatUp/app/src/main/res/layout/activity_group_chat.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidWorkspace/ChatUp/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidWorkspace/ChatUp/app/src/main/res/layout/delete_dialog.xml" value="0.25" />
+        <entry key="..\:/AndroidWorkspace/ChatUp/app/src/main/res/layout/demo_status.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidWorkspace/ChatUp/app/src/main/res/layout/demo_users.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidWorkspace/ChatUp/app/src/main/res/layout/item_status.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidWorkspace/ChatUp/app/src/main/res/layout/receive_chat.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidWorkspace/ChatUp/app/src/main/res/layout/sent_chat.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
